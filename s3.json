@@ -1,5 +1,5 @@
 {
-   "AWSTemplateFormatVersion": "2010-09-09T00:00:00.000Z",
+   "AWSTemplateFormatVersion" : "2010-09-09",
    "Parameters": {
       "S3BucketName": {
          "Type": "String",
@@ -12,7 +12,7 @@
       "S3Bucket": {
          "Type": "AWS::S3::Bucket",
          "Properties": {
-            "BucketName": null,
+            "BucketName": { "Ref" : "S3BucketName" },
             "AccessControl": "Private",
             "BucketEncryption": {
                "ServerSideEncryptionConfiguration": [
@@ -32,7 +32,7 @@
    "Outputs": {
       "S3bucketName": {
          "Description": "S3 bucket Name",
-         "Value": null
+         "Value": { "Ref" : "S3BucketName" }
       }
    }
 }
