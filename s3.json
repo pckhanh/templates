@@ -1,0 +1,38 @@
+{
+   "AWSTemplateFormatVersion": "2010-09-09T00:00:00.000Z",
+   "Parameters": {
+      "S3BucketName": {
+         "Type": "String",
+         "Description": "S3 bucket Name",
+         "AllowedPattern": "(?!-)[a-z0-9-.]*(?<!-)",
+         "ConstraintDescription": "must contain only lowercase letters, numbers, periods (.), and dashes (-)."
+      }
+   },
+   "Resources": {
+      "S3Bucket": {
+         "Type": "AWS::S3::Bucket",
+         "Properties": {
+            "BucketName": null,
+            "AccessControl": "Private",
+            "BucketEncryption": {
+               "ServerSideEncryptionConfiguration": [
+                  {
+                     "ServerSideEncryptionByDefault": {
+                        "SSEAlgorithm": "AES256"
+                     }
+                  }
+               ]
+            },
+            "VersioningConfiguration": {
+               "Status": "Enabled"
+            }
+         }
+      }
+   },
+   "Outputs": {
+      "S3bucketName": {
+         "Description": "S3 bucket Name",
+         "Value": null
+      }
+   }
+}
